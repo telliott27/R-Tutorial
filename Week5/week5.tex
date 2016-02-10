@@ -73,6 +73,20 @@ Windows     Mac   Linux   Other
 Levels: Windows Mac Linux Other
 \end{verbatim}
 
+\subsection{Ordered Factors}
+
+Regular factor variables assume that the variable is purely categorical - that the ordering of the levels does not matter. However, there may be instances in which the order is meaningful, for example measures of class. You can use \texttt{ordered()} in the same way you use \texttt{factor()} but the order of the levels will matter. For example:
+
+\begin{verbatim}
+> ses<-c("low","high","mid","mid","high","mid","mid","low","low","mid")
+> ses.f<-ordered(ses,levels=c("low","mid","high"))
+> ses.f
+ [1] low  high mid  mid  high mid  mid  low  low  mid 
+Levels: low < mid < high
+\end{verbatim}
+
+In most cases, ordered and factored variables are treated similarly. You can also create an ordered variable by suppling the \texttt{ordered=TRUE} argument to the \texttt{factor()} function.
+
 \subsection{Creating Dummy Variables From Factors}
 
 A continuing theme is that data management and manipulation is often easier in Stata than base R, a fact that kept me doing a lot of data cleaning in Stata and then exporting to R when I first started using R. Creating dummy variables from factor variables is one of those things that are easier in Stata than in R. One reason is that it is often less important to create the dummy variables, as R will automatically expand factor variables were appropriate. While there are many, imperfect, work-arounds to create dummies for all levels in a factor, I would recommend simply using boolean expressions to explicitly create dummies for each level you need a dummy for. Remember that when R forces a boolean into a numeric, FALSE gets evaluated as 0 and TRUE is evaluated as 1. Thus:

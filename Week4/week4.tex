@@ -36,7 +36,9 @@ Like Stata, R can have different types of variables, meaning the variables conta
 
 \subsection{Naming Variables}
 
-In R, object names can contain any valid letter, number, the period or the underscore. Objects must start with either a letter, or a dot not followed by a number (so \texttt{.dv} is a valid variable name but \texttt{.2way} is not). There are no strict naming conventions in R (to the consternation of many with a computer programming background), but it is common to use the period to separate words in a variable name (e.g. \texttt{African.American}). As in Stata, variable and object names are case-sensitive, so it is valid to have three different variables, \texttt{sex}, \texttt{Sex}, and \texttt{SEX} with different contents. Obviously, this isn't a good idea so try to avoid. 
+In R, object names can contain any valid letter, number, the period or the underscore. Objects must start with either a letter, or a dot not followed by a number (so \texttt{.dv} is a valid variable name but \texttt{.2way} is not). If you begin a variable with a ., it works much like doing the same for filenames on the computer - the variables will be hidden from \texttt{ls()} by default, but will still exist. This naming convention is often used in developing packages for variables and functions used internally, but not meant to be accessed by the user.
+
+There are no strict naming conventions in R (to the consternation of many with a computer programming background), but it is common to use the period to separate words in a variable name (e.g. \texttt{African.American}). As in Stata, variable and object names are case-sensitive, so it is valid to have three different variables, \texttt{sex}, \texttt{Sex}, and \texttt{SEX} with different contents. Obviously, this isn't a good idea so try to avoid. 
 
 In Stata you can assign a variable label to better describe the contents of the variable. Unfortunately, there is no equivalent in R, so variable names should be as descriptive as possible without being cumbersome. 
 

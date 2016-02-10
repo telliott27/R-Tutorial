@@ -65,17 +65,17 @@ To continue from last week, loading and saving data in R works a little differen
 
 To save a copy of the workspace, including all loaded objects, use the function \texttt{save.image()}. You will need to supply a file name to which the workspace will be saved:
 
-\begin{lstlisting}
+\begin{verbatim}
 save.image("my-data.Rdata")
-\end{lstlisting}
+\end{verbatim}
 
 By default, the R data file created is a compressed, binary version of the workspace (Stata's data files are uncompressed, and so the same data often takes up between 1/5 to 1/10 the space in an R data file than a Stata data file). To change these settings, including which compression algorithm to use, how much to compress the data, and options to save in older R formats, you can supply additional arguments to \texttt{save.image()}. See the function's help file for details. I rarely adjust these settings.
 
-There are times when I'm working that I've created a lot of extraneous objects in my workspace that I don't want to save. I'll show you in a later week how to remove these from your workspace, but an alternative when you are saving is to tell R which objects you want to save. You can do this using the \texttt{save()} function. You use \texttt{save()} by, first, listing out the objects you want to save and then supplying the named argument \texttt{file=} to tell R where to save the objects.
+There are times when I'm working that I've created a lot of extraneous objects in my workspace that I don't want to save. You can remove objects with the command \texttt{rm(objname)}, but you can also selectively save specific objects to a file. You can do this using the \texttt{save()} function. You use \texttt{save()} by, first, listing out the objects you want to save and then supplying the named argument \texttt{file=} to tell R where to save the objects.
 
-\begin{lstlisting}
+\begin{verbatim}
 save(articles,claims,talk.info,file="my-data.Rdata")
-\end{lstlisting}
+\end{verbatim}
 
 The \texttt{file=} argument must be named, otherwise R will interpret ``my-data.Rdata'' as another object you want to save rather than the filename. The data file created with this function is identical to the file created using \texttt{save.image()}, it just gives you more control over what, exactly, gets saved. This means you can adjust the settings for version, compression, etc., in the same way with \texttt{save()}.
 
@@ -83,9 +83,9 @@ The \texttt{file=} argument must be named, otherwise R will interpret ``my-data.
 
 To load an R data file, you use the \texttt{load()} function:
 
-\begin{lstlisting}
+\begin{verbatim}
 load("my-data.Rdata")
-\end{lstlisting}
+\end{verbatim}
 
 The objects contained in the data file are loaded into your workspace. Your workspace does not need to be empty to load a data file, so you can load multiple data files to populate a single workspace. If a data file contains an object with the same name as one already loaded in your workspace, the object in your workspace will be over-written by the object in the data file, so pay attention to what you are loading versus what is already loaded to avoid losing data.
 
