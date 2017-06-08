@@ -1,0 +1,49 @@
+---
+title: "Week 11: R Markdown"
+author: "Thomas Elliott"
+date: "March 28, 2016"
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(stargazer)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+R Markdown is a type of document that allows you to write papers, memos, articles, etc., using both Markdown and chunks of R code that are run in place. Markdown is a simple formatting syntax for creating HTML, PDF (via LaTeX), and Word documents. There are a lot of markdown guides online so I won't do a comprehensive overview of markdown. Instead, check out any of the many useful guides for how markdown works. Note that in order to produce PDFs, you'll need to have a TeX engine installed on your computer.
+
+What makes R Markdown a little different is that in addition to formatting, you can also include chunks of R code which get run in place when you "compile" the document. The results of these chunks are displayed in place in the final document. RStudio has great support for R Markdown, and writing R Markdown documents in RStudio is incredibly simple.
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. 
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunks be enclosing the lines in 3 or more back tick marks (above the tab key on a US English keyboard). Immediately following the first set of back ticks, you include `{r}` to define the code chunk as an R code chunk (markdown is able to recognize different languages and will apply syntax highlighting appropriately). You can also supply many different options to the code chunk within the braces, including whether to output the lines of code `echo=TRUE`, whether to output the messages generated from commands `message=TRUE`, or even defining the size of any plots produced by the code `fig.width=8,fig.height=8`. The R Markdown website (linked below) contains a good primer for the different options available. 
+
+For example, a simple code chunk that prints summary statistics of the `mtcars` dataset would produce:
+
+```{r cars}
+summary(mtcars)
+```
+
+We could also have `stargazer` output the formatted table directly within our document. To get this to work correctly, you'll have to supply the `results='asis'` option so that markdown doesn't try to convert the LaTeX code to markdown.
+
+```{r, results='asis'}
+ols<-lm(mpg ~ cyl + hp + wt, data = mtcars)
+stargazer(ols,header=FALSE)
+```
+
+If you are producing a HTML document from R Markdown, you could supply the `type='html'` argument to `stargazer`. Unfortunately, there is not a way to get stargazer's pretty tables to work natively in a Word document produced in R Markdown. There are a few packages currently in development to render markdown directly (rather than HTML or LaTeX code) which should allow Word documents to take advantage of these packages, but I haven't tested them extensively. 
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(mtcars$hp,mtcars$mpg)
+```
+
+Here I supplied the argument `echo = FALSE` which means the code used to generate the figure is not included in the final document. This argument is actually really helpful if you are writing documents for others where the results are important to display, but the code to generate the results are not as important to display for your readers. Theoretically, markdown is powerful enough to allow you to write full academic articles (it can even embed citations and automatically generated a bibliography), in which case you wouldn't want to show any of the actual code, just the generated tables and figures.
+
+For more details on using R Markdown see <http://rmarkdown.rstudio.com>.

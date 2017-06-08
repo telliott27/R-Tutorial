@@ -1,0 +1,28 @@
+\documentclass[12pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[margin=1in]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb,hyperref}
+
+\title{Week 13 Homework}
+%\author{The Author}
+\date{\today}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+Create a R \textbf{markdown} file that does the following:
+
+\begin{enumerate}
+\item Loads the \texttt{mtcars} data set (you can also use your own data set, but it should be one that you can create fuzzy sets from).
+\item Calibrate the mpg variable into a fuzzy set for high MPG. Justify your cut-off points either before or after the code chunk that calibrates the outcome set.
+\item Calibrates three condition sets, at least one of which is a fuzzy set. Justify your cut-off points either before or after the code chunk.
+\item Produce a truth table sorted by consistency scores. The truth table should have at least one row coded as having the outcome in order to produce the reduced solution. If yours does not, either lower the consistency threshold or try different conditional sets or calibrations.
+\item Produce a complex, a parsimonious, and an intermediate solution. Justify your directional expectations for the intermediate solution.
+\end{enumerate}
+
+
+\end{document}  

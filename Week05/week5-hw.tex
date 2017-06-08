@@ -1,0 +1,32 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Week 5 Homework}
+%\author{The Au}
+\date{\today}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+Create a source file that does the following:
+
+\begin{enumerate}
+\item Import the hire771.dta Stata dataset
+\item Print the first 10 rows of the data frame
+\item Create a new variable within the data frame that is a factor variable of sex. Value labels of the factor should be  ``male'' and ``female.'' Check that the new variable was created correctly by comparing the original sex variable with the new one using the \texttt{table()} command.
+\item Rename the original sex variable to ``male.''
+\item Create a new variable in the data frame that is a factor variable of ethnic. The value labels should match those in the codebook. Check that the new variable is correct with \texttt{table()}.
+\item Create a dummy variable for ``African-American'' in the data frame
+\item Create a categorical variable from salary where salaries below 100 are labeled ``Low,'' salaries between 100 and 200 are labeled ``Medium,'' and salaries above 200 are labeled ``High.''
+\item Save the modified data frame in a new R data file.
+\end{enumerate}
+
+
+
+\end{document}  

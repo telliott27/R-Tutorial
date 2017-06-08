@@ -1,0 +1,52 @@
+
+> #######################################################
+> # Week 7 Homework
+> #######################################################
+> 
+> library(f .... [TRUNCATED] 
+
+> library(dplyr)
+
+> library(tidyr)
+
+> # import DOCA dataset
+> doca<-read.dta("final_data.dta")
+
+> # keep only eventid, year, and smoname1-4
+> doca<-select(doca,eventid,year=evyy,matches("smoname[1-4]"))
+
+> names(doca)
+[1] "eventid"  "year"     "smoname1" "smoname2" "smoname3" "smoname4"
+
+> # reshape data to long
+> doca.long<-gather(doca,smonum,smoname,matches("smoname[1-4]"))
+
+> # import pci.csv
+> pci<-read.csv("pci.csv")
+
+> #check dimensions of data frame before merging
+> dim(doca.long)
+[1] 94464     4
+
+> #merge on pci
+> doca.long<-left_join(doca.long,pci,by="year")
+
+> # check dimensions after merge
+> dim(doca.long)
+[1] 94464     5
+
+> #list out first ten rows
+> doca.long[1:10,]
+   eventid year   smonum                            smoname pcippp
+1  6001001 1960 smoname1                                     11328
+2  6001002 1960 smoname1                                     11328
+3  6001003 1960 smoname1                 THE CITIZENS UNION  11328
+4  6001004 1960 smoname1  NORTH SHORE RESIDENTS ASSOCIATION  11328
+5  6001005 1960 smoname1                                     11328
+6  6001006 1960 smoname1                                     11328
+7  6001007 1960 smoname1                                     11328
+8  6001008 1960 smoname1                                     11328
+9  6001009 1960 smoname1                                     11328
+10 6001010 1960 smoname1 COMMISSION ON INTERGROUP RELATIONS  11328
+
+> sink(NULL)

@@ -1,0 +1,54 @@
+\documentclass[12pt, oneside]{amsart}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[margin=1in]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb,hyperref}
+
+\title{Week 6: Regular Expressions}
+\author{Thomas Elliott}
+\date{\today}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+Regular expressions are advanced ways of searching and manipulating characters. For an introduction to how regular expressions work more generally, search your favorite search engine for regular expressions. This website (\url{http://www.regular-expressions.info/}) has a lot of information about how regular expressions work.
+
+R comes with a number of functions for using regular expressions. They share the same help page, so you can see what is available by typing \texttt{?grep}. By default, these functions use the POSIX implementation of regular expressions. You can tell R to use perl-style regular expressions by supplying the \texttt{perl=TRUE} argument to any of the following functions.
+
+\textbf{\texttt{grep()}} --- this function takes a character vector and returns a vector of indices that match the regular expression. For example:
+
+\begin{verbatim}
+> test<-c("apple","banana","orange","pear")
+> grep("ap",test)
+[1] 1
+\end{verbatim}
+
+\textbf{\texttt{grepl()}} --- this function takes a character vector and returns a logical vector indicating whether the corresponding element in the character vector matches the regular expression.
+
+\begin{verbatim}
+> grepl("ap",test)
+[1]  TRUE FALSE FALSE FALSE
+\end{verbatim}
+
+\textbf{\texttt{sub()}} --- this function takes a character vector and, in each element, replaces the first match with the regular expression with a replacement character.
+
+\begin{verbatim}
+> sub("[aeiou]","4",test)
+[1] "4pple"  "b4nana" "4range" "p4ar" 
+\end{verbatim}
+
+\textbf{\texttt{gsub()}} --- this function takes a character vector and, in each element, replaces the all matches with the regular expression with a replacement character.
+
+\begin{verbatim}
+> gsub("[aeiou]","4",test)
+[1] "4ppl4"  "b4n4n4" "4r4ng4" "p44r" 
+\end{verbatim}
+
+There are three more regular expression functions in the help file, but the returned objects are more complicated and you will not likely use them when beginning with R. You can read about what they return (and play around with what they return) on your own.
+
+
+
+\end{document}  
